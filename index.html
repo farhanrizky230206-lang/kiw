@@ -263,8 +263,8 @@
       position:relative;
       perspective:900px;
       cursor:pointer;
-      filter:drop-shadow(0 24px 35px rgba(0,0,0,.3));
-      overflow:hidden;
+      filter:drop-shadow(0 30px 45px rgba(255,182,193,.35));
+      overflow:visible;
     }
 
     .env-body{
@@ -272,8 +272,22 @@
       inset:0;
       z-index:2;
       border-radius:20px;
-      background:linear-gradient(145deg,#f6dbe3,#dba8b7);
+      background:linear-gradient(145deg,#ffdbe8 0%, #f5b7c8 55%, #e79ab3 100%);
+      border:2px solid rgba(255,255,255,.35);
+      box-shadow:
+          0 20px 45px rgba(0,0,0,.28),
+          inset 0 2px 8px rgba(255,255,255,.45);
       overflow:hidden;
+    }
+    .env-body::before,
+    .env-body::after{
+        content:"";
+        position:absolute;
+        top:0;
+        width:55%;
+        height:100%;
+        background:linear-gradient(145deg,#ffdbe8,#efb5c8);
+        z-index:2;
     }
    
     .env-body::before{
@@ -311,7 +325,7 @@
       position:absolute;
       left:0;right:0;top:0;
       height:58%;
-      background:linear-gradient(145deg,#f9e2e8,#dca5b5);
+      background:linear-gradient(160deg,#ffe5ef,#efb5c8);
       clip-path:polygon(0 0,100% 0,50% 100%);
       transform-origin:top;
       transition:transform .8s cubic-bezier(.2,.8,.2,1);
