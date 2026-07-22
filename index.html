@@ -264,6 +264,7 @@
       perspective:900px;
       cursor:pointer;
       filter:drop-shadow(0 24px 35px rgba(0,0,0,.3));
+      overflow:hidden;
     }
 
     .env-body{
@@ -329,7 +330,7 @@
       transition:.4s ease;
     }
 
-    .envelope
+    .envelope.open{overflow:visible;}
     .envelope.open .env-flap{transform:rotateX(180deg)}
     .envelope.open .letter{transform:translateY(-58%);z-index:6;}
     .envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.7)}
