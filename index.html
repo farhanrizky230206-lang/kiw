@@ -418,6 +418,104 @@
       .topbar{top:calc(8px + env(safe-area-inset-top))}
     }
 
+    .open-hint{
+      margin:0 0 18px;
+      color:var(--rose-2);
+      font-size:16px;
+      font-weight:800;
+      letter-spacing:.04em;
+      animation:hintPulse 1.7s ease-in-out infinite;
+    }
+
+    @keyframes hintPulse{
+      0%,100%{
+        opacity:.65;
+        transform:translateY(0);
+     }
+
+      50%{
+        opacity:1;
+        transform:translateY(-4px);
+     }
+   }
+
+   .letter{
+     position:absolute;
+     left:9%;
+     right:9%;
+     bottom:13px;
+     height:78%;
+     border-radius:16px;
+     background:#fff9fb;
+     color:#6a3547;
+     padding:18px;
+     transform:translateY(42%);
+     transition:
+       transform .9s cubic-bezier(.2,.8,.2,1),
+       height .9s ease;
+     z-index:2;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+     text-align:center;
+     box-shadow:0 10px 22px rgba(75,30,48,.16);
+   }
+
+   .letter-content{
+     display:flex;
+     flex-direction:column;
+     gap:8px;
+     align-items:center;
+     justify-content:center;
+     font-family:Georgia,"Times New Roman",serif;
+     font-size:17px;
+     line-height:1.4;
+   }
+
+   .letter-small{
+     font-family:Inter,ui-sans-serif,system-ui,sans-serif;
+     color:#aa6077;
+     font-size:11px;
+     font-weight:900;
+     letter-spacing:.2em;
+     text-transform:uppercase;
+   }
+
+   .envelope.open .letter{
+     transform:translateY(-34%);
+     z-index:6;
+   }
+
+   .envelope.open .env-flap{
+     transform:rotateX(180deg);
+     z-index:1;
+   }
+
+   .envelope.open .seal{
+     opacity:0;
+     transform:translate(-50%,-50%) scale(.7);
+   }
+
+   .hidden{
+     display:none !important;
+   }
+
+   #openMessageButton.show{
+     display:flex !important;
+     animation:buttonAppear .65s ease;
+   }
+
+   @keyframes buttonAppear{
+     from{
+       opacity:0;
+       transform:translateY(15px);
+     }
+
+     to{
+       opacity:1;
+       transform:translateY(0);
+     }
+   }
     @media (prefers-reduced-motion:reduce){
       *,*::before,*::after{
         animation-duration:.001ms!important;
@@ -451,18 +549,27 @@
         <div class="card-inner">
           <p class="eyebrow">Sebuah pesan khusus</p>
 
+          <p class="open-hint" id="openHint">Buka dulu amplopnya 💌</p>
+
           <div class="envelope" id="envelope" aria-label="Buka surat">
             <div class="env-body"></div>
-            <div class="letter">Ada sesuatu yang ingin aku sampaikan dengan sungguh-sungguh.</div>
-            <div class="env-flap"></div>
-            <div class="seal">♥</div>
-          </div>
+
+            <div class="letter">
+              <div class="letter-content">
+                <span class="letter-small">Untuk kamu</span>
+                <strong>Ada sesuatu yang ingin aku sampaikan dengan sungguh-sungguh.</strong>
+             </div>
+           </div>
+
+           <div class="env-flap"></div>
+           <div class="seal">♥</div>
+         </div>
 
           <h1>Hai, Tiaraa 🤍</h1>
           <p>Aku membuat halaman ini karena ada sesuatu yang sudah cukup lama ingin aku sampaikan kepadamu.</p>
           <p class="quote">Baca semuanya sampai akhir, ya.</p>
 
-          <div class="btn-row">
+          <div class="btn-row hidden" id="openMessageButton">
             <button class="btn btn-primary" data-next="2">Buka pesannya</button>
           </div>
 
@@ -623,8 +730,19 @@
       }catch(_){}
     }
 
+    const openHint = document.getElementById("openHint");
+    const openMessageButton = document.getElementById("openMessageButton");
+
     envelope.addEventListener("click",()=>{
-      envelope.classList.toggle("open");
+      if(envelope.classList.contains("open")) return;
+
+      envelope.classList.add("open");
+      openHint.textContent = "Suratnya sudah terbuka 🤍";
+
+      setTimeout(()=>{
+        openMessageButton.classList.add("show");
+      },700);
+
       startMusic();
     });
 
