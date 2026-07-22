@@ -259,7 +259,6 @@
     .envelope{
       width:min(340px,88%);
       height:210px;
-      overflow:hidden;
       margin:8px auto 32px;
       position:relative;
       perspective:900px;
@@ -268,7 +267,9 @@
     }
 
     .env-body{
-      position:absolute;inset:0;
+      position:absolute;
+      inset:0;
+      z-index:4;
       border-radius:20px;
       background:linear-gradient(145deg,#f6dbe3,#dba8b7);
       overflow:hidden;
@@ -318,15 +319,15 @@
       position:absolute;
       left:8%;
       right:8%;
-      bottom:8px;
-      height:64%;
+      bottom:12px;
+      height:72%;
       border-radius:16px;
       background:#fff9fb;
       color:#6a3547;
       padding:18px;
-      transform:translateY(92%);
+      transform:translateY(65%);
       transition:transform .8s cubic-bezier(.2,.8,.2,1);
-      z-index:3;
+      z-index:2;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -338,7 +339,7 @@
 
     .envelope
     .envelope.open .env-flap{transform:rotateX(180deg)}
-    .envelope.open .letter{transform:translateY(-12%)}
+    .envelope.open .letter{transform:translateY(-40%);z-index:6;}
     .envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.7)}
 
     .btn-row{
