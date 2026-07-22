@@ -315,13 +315,16 @@
     }
     .letter{
       position:absolute;
-      left:8%;right:8%;bottom:12px;
-      height:84%;
+      left:8%;
+      right:8%;
+      bottom:8px;
+      height:64%;
+      overflow:hidden;
       border-radius:16px;
       background:#fff9fb;
       color:#6a3547;
-      padding:22px;
-      transform:translateY(35%);
+      padding:18px;
+      transform:translateY(92%);
       transition:transform .8s cubic-bezier(.2,.8,.2,1);
       z-index:3;
       display:flex;
@@ -329,12 +332,13 @@
       justify-content:center;
       text-align:center;
       font-family:Georgia,"Times New Roman",serif;
-      font-size:20px;
-      line-height:1.45;
+      font-size:18px;
+      line-height:1.4;
     }
 
+    .envelope
     .envelope.open .env-flap{transform:rotateX(180deg)}
-    .envelope.open .letter{transform:translateY(-36%)}
+    .envelope.open .letter{transform:translateY(-12%)}
     .envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.7)}
 
     .btn-row{
