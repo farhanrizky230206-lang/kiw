@@ -444,28 +444,6 @@
      }
    }
 
-   .letter{
-     position:absolute;
-     left:9%;
-     right:9%;
-     bottom:13px;
-     height:78%;
-     border-radius:16px;
-     background:#fff9fb;
-     color:#6a3547;
-     padding:18px;
-     transform:translateY(42%);
-     transition:
-       transform .9s cubic-bezier(.2,.8,.2,1),
-       height .9s ease;
-     z-index:2;
-     display:flex;
-     align-items:center;
-     justify-content:center;
-     text-align:center;
-     box-shadow:0 10px 22px rgba(75,30,48,.16);
-   }
-
    .letter-content{
      display:flex;
      flex-direction:column;
@@ -484,21 +462,6 @@
      font-weight:900;
      letter-spacing:.2em;
      text-transform:uppercase;
-   }
-
-   .envelope.open .letter{
-     transform:translateY(-34%);
-     z-index:6;
-   }
-
-   .envelope.open .env-flap{
-     transform:rotateX(180deg);
-     z-index:1;
-   }
-
-   .envelope.open .seal{
-     opacity:0;
-     transform:translate(-50%,-50%) scale(.7);
    }
 
    .hidden{
